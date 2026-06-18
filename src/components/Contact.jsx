@@ -11,10 +11,9 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Replace these placeholders with your actual EmailJS IDs
-    const serviceID = 'service_pvosap8';
-    const templateID = 'template_yg1eq5z';
-    const publicKey = 'YKL6q15I_ye09BF-c';
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
       .then((result) => {
