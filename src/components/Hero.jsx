@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import portraitImg from '../assets/portrait.png';
 import './Hero.css';
@@ -8,6 +8,7 @@ const Hero = () => {
   const textRef = useRef(null);
   const imgRef = useRef(null);
   const imgContainerRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     // Text animations
@@ -37,18 +38,6 @@ const Hero = () => {
       }
     );
 
-    // Image animations (load in)
-    gsap.fromTo(imgContainerRef.current,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out",
-        delay: 0.5
-      }
-    );
-
     // Scroll parallax & scale
     gsap.to(imgRef.current, {
       yPercent: 10,
@@ -62,7 +51,26 @@ const Hero = () => {
       }
     });
 
+    // Check if image is already cached/loaded
+    if (imgRef.current && imgRef.current.complete) {
+      setImageLoaded(true);
+    }
   }, []);
+
+  useLayoutEffect(() => {
+    if (imageLoaded && imgContainerRef.current) {
+      gsap.fromTo(imgContainerRef.current,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+          delay: 0.2
+        }
+      );
+    }
+  }, [imageLoaded]);
 
   return (
     <section className="hero-section" ref={containerRef}>
@@ -81,9 +89,14 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="hero-content-right" ref={imgContainerRef}>
+        <div className="hero-content-right" ref={imgContainerRef} style={{ opacity: 0 }}>
           <div className="hero-image-wrapper">
-            <img src={portraitImg} alt="Aswin Raj - Web Developer and MERN Stack Engineer" ref={imgRef} />
+            <img 
+              src={portraitImg} 
+              alt="Aswin Raj - Web Developer and MERN Stack Engineer" 
+              ref={imgRef} 
+              onLoad={() => setImageLoaded(true)} 
+            />
           </div>
         </div>
 

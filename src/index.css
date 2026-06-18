@@ -73,3 +73,9 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  html, body, *, a, button {
+    cursor: auto !important;
+  }
+}
