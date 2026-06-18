@@ -1,0 +1,113 @@
+.work-section {
+  padding: 5vw 5vw;
+}
+
+.work-header {
+  margin-bottom: 5vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 2rem;
+}
+
+.work-header h2 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+.work-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 6vw;
+  padding: 4vw 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.project-card:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-meta-top {
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.project-info h3 {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+}
+
+.project-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background-color: #111;
+  position: relative;
+  filter: grayscale(100%) contrast(1.2);
+  transition: filter 0.5s ease;
+}
+
+.project-card:hover .project-image-wrapper {
+  filter: grayscale(0%) contrast(1);
+}
+
+.project-image-content {
+  width: 100%;
+  height: 130%; /* Taller for parallax */
+  object-fit: cover;
+  display: block;
+  transform-origin: center;
+}
+
+/* On mobile, stack them */
+@media (max-width: 900px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .project-image-wrapper {
+    order: -1; /* image on top */
+  }
+}
+
+.gritty-button {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  border: 1px solid var(--text-primary);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: none;
+  background: transparent;
+}
+
+.gritty-button:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+}

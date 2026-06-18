@@ -1,0 +1,22 @@
+.projects-page {
+  padding-top: 5vh;
+}
+
+.projects-page-header {
+  padding: 0 5vw;
+  margin-bottom: 5vh;
+}
+
+.back-button {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+  cursor: none; /* Inherit custom cursor */
+}
+
+.back-button:hover {
+  color: var(--text-primary);
+}

@@ -1,0 +1,29 @@
+.about-minimal-section {
+  padding: 15vw 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.about-minimal-content {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-minimal-content h2 {
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.about-minimal-content p {
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  max-width: 600px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
